@@ -1,0 +1,10 @@
+name = "brute"
+description = "fucked up theme"
+license = "BSD"
+homepage = "https://github.com/piedoom/brute"
+# The minimum version of Gutenberg required
+min_version = "0.1"
+
+[author]
+name = "doomy"
+homepage = "https://alexanderlozada.com"
