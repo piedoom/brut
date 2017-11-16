@@ -10,40 +10,43 @@
       <title>{% block title %}{{ config.title }}{% endblock title %}</title>
 
       <!-- CSS -->
-      <link rel="stylesheet" href="{{ get_url(path="print.css") }}" media="print">
-      <link rel="stylesheet" href="{{ get_url(path="poole.css") }}">
-      <link rel="stylesheet" href="{{ get_url(path="hyde.css") }}">
-      <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-      {% if config.generate_rss %}
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml") }}">
-      {% endif %}
-
-      {% block extra_head %}
-      {% endblock extra_head %}
+      <link rel="stylesheet" type="text/css" href='{{ get_url(path="reset.css") }}'>
+      <link rel="stylesheet" type="text/css" href='{{ get_url(path="main.css") }}'>
+      
+      <!-- JS -->
+      <script src='{{ get_url(path="main.js") }}'> </script>
+      
     </head>
 
     <body>
-
-
-        <div class="content container">
-            {% block content %}
-                <div class="posts">
-                    {% for page in section.pages %}
-                      <div class="post">
-                        <h1 class="post-title">
-                          <a href="{{ page.permalink }}">
-                            {{ page.title }}
-                          </a>
-                        </h1>
-
-                        <span class="post-date">{{ page.date | date(format="%Y-%m-%d") }}</span>
-
-                    {% endfor %}
-                </div>
-            {% endblock content %}
-        </div>
-
+    
+    	{% block header %}
+    		<header>
+    			{{ config.title }}
+    		</header>
+    	{% endblock header %}
+    	   
+    	<div class='container'>
+			{% block content %}
+				<h2>
+					{{ config.extra.brute_posts_title }} 
+				</h2>
+				
+				{% for page in section.pages %}
+                    <div class='article-container'>
+                        <a href={{page.permalink}}>
+                            <article> 
+                                <div class='thumb' style='background-image: url({{get_url(path=page.extra.brute_picture)}})'>
+                                </div>
+                                <p>
+                                    {{ page.title }}
+                                </p>
+                            </article>
+                        </a>
+                    </div>
+				{% endfor %}
+			{% endblock content %}
+		</div>	
     </body>
 
 </html>

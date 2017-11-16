@@ -8,3 +8,6 @@ min_version = "0.1"
 [author]
 name = "doomy"
 homepage = "https://alexanderlozada.com"
+
+[extra]
+brute_posts_title = "project stuff"
